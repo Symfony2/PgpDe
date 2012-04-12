@@ -1,0 +1,11 @@
+D:\Profiles\Documents\Visual Studio 2010\Projects\experiments\PgpDE\OpenPGPzzz\bin\Debug\OpenPGPzzz.dll
+D:\Profiles\Documents\Visual Studio 2010\Projects\experiments\PgpDE\OpenPGPzzz\bin\Debug\OpenPGPzzz.pdb
+D:\Profiles\Documents\Visual Studio 2010\Projects\experiments\PgpDE\OpenPGPzzz\bin\Debug\BouncyCastle.Crypto.dll
+D:\Profiles\Documents\Visual Studio 2010\Projects\experiments\PgpDE\OpenPGPzzz\obj\Debug\ResolveAssemblyReference.cache
+D:\Profiles\Documents\Visual Studio 2010\Projects\experiments\PgpDE\OpenPGPzzz\obj\Debug\OpenPGPzzz.dll
+D:\Profiles\Documents\Visual Studio 2010\Projects\experiments\PgpDE\OpenPGPzzz\obj\Debug\OpenPGPzzz.pdb
+C:\Users\Symfony\Desktop\Documents\Visual Studio 2010\Projects\exp\crypto\PgpDE\OpenPGPzzz\bin\Debug\OpenPGPzzz.dll
+C:\Users\Symfony\Desktop\Documents\Visual Studio 2010\Projects\exp\crypto\PgpDE\OpenPGPzzz\bin\Debug\OpenPGPzzz.pdb
+C:\Users\Symfony\Desktop\Documents\Visual Studio 2010\Projects\exp\crypto\PgpDE\OpenPGPzzz\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Symfony\Desktop\Documents\Visual Studio 2010\Projects\exp\crypto\PgpDE\OpenPGPzzz\obj\Debug\OpenPGPzzz.dll
+C:\Users\Symfony\Desktop\Documents\Visual Studio 2010\Projects\exp\crypto\PgpDE\OpenPGPzzz\obj\Debug\OpenPGPzzz.pdb
