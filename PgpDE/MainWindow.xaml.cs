@@ -27,9 +27,13 @@ namespace PgpDE
         public MainWindow()
         {
             InitializeComponent();
-            publicKeyPath = @"C:\Users\Symfony\Documents\keys\Yan\pub.bpg";
+            /*publicKeyPath = @"C:\Users\Symfony\Documents\keys\Yan\pub.bpg";
             privateKeyPath = @"C:\Users\Symfony\Documents\keys\Almaz\secret.bpg";
-            passPhrase = "root";
+            passPhrase = "root";*/
+
+            publicKeyPath = @"C:\Users\Алмаз\Documents\Keys\bojok\pub.bpg";
+            privateKeyPath = @"C:\Users\Алмаз\Documents\Keys\almaz\secret.bpg";
+            passPhrase = "galileo";
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
@@ -38,10 +42,9 @@ namespace PgpDE
             PgpEncryptionKeys kes = new PgpEncryptionKeys(this.publicKeyPath, this.privateKeyPath, this.passPhrase);
             PgpEncrypt ecnFile = new PgpEncrypt(kes);
             FileInfo fileInfo = new FileInfo(@"D:\Temp\Шаляпин.doc");
-            
-            //FileInfo fileInfo = new FileInfo(@"D:\Temp\11122.xlsx");
+
             //using (Stream outStrm = File.Create(@"C:\Users\Symfony\" + fileInfo.Name + ".enc"))
-            using (Stream outStrm = File.Create(@"C:\Users\Symfony\" + fileInfo.Name + ".enc"))
+            using (Stream outStrm = File.Create(@"C:\Users\Алмаз\" + fileInfo.Name + ".enc"))
             {                
                 ecnFile.EncryptAndSign(outStrm, fileInfo);                
             }
@@ -50,11 +53,11 @@ namespace PgpDE
 
         private void button2_Click(object sender, RoutedEventArgs e)
         {
-            PgpEncryptionKeys kes = new PgpEncryptionKeys(@"C:\Users\Symfony\Documents\keys\Almaz\pub.bpg",
-                                                          @"C:\Users\Symfony\Documents\keys\Yan\secret.bpg", 
-                                                          "acer");
+            PgpEncryptionKeys kes = new PgpEncryptionKeys(@"C:\Users\Алмаз\Documents\Keys\almaz\pub.bpg",
+                                                          @"C:\Users\Алмаз\Documents\Keys\bojok\secret.bpg", 
+                                                          "ajar");
             PgpDecrypt decFile = new PgpDecrypt(kes);
-            //StreamReader strRd = new StreamReader(File.OpenRead(@"C:\Users\Symfony\Шаляпин.doc.enc"), Encoding.ASCII);
+            
             using (var encStream = File.OpenRead(@"C:\Users\Symfony\Шаляпин.doc.enc"))            
             {
                 decFile.VerifySignature(encStream, @"D:\Temp");

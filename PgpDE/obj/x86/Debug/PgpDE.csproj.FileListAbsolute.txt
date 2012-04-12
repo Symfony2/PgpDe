@@ -30,3 +30,5 @@ C:\Users\Symfony\Desktop\Documents\Visual Studio 2010\Projects\exp\crypto\PgpDE\
 C:\Users\Symfony\Desktop\Documents\Visual Studio 2010\Projects\exp\crypto\PgpDE\PgpDE\obj\x86\Debug\PgpDE.Properties.Resources.resources
 C:\Users\Symfony\Desktop\Documents\Visual Studio 2010\Projects\exp\crypto\PgpDE\PgpDE\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\Users\Symfony\Desktop\Documents\Visual Studio 2010\Projects\exp\crypto\PgpDE\PgpDE\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\repo\PgpDe\PgpDE\obj\x86\Debug\PgpDE.exe
+D:\repo\PgpDe\PgpDE\obj\x86\Debug\PgpDE.pdb
