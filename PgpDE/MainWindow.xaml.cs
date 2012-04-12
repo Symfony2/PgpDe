@@ -42,9 +42,9 @@ namespace PgpDE
             PgpEncryptionKeys kes = new PgpEncryptionKeys(this.publicKeyPath, this.privateKeyPath, this.passPhrase);
             PgpEncrypt ecnFile = new PgpEncrypt(kes);
             FileInfo fileInfo = new FileInfo(@"D:\Temp\Шаляпин.doc");
-
+             
             //using (Stream outStrm = File.Create(@"C:\Users\Symfony\" + fileInfo.Name + ".enc"))
-            using (Stream outStrm = File.Create(@"C:\Users\Алмаз\" + fileInfo.Name + ".enc"))
+            using (Stream outStrm = File.Create(@"C:\Users\Алмаз\" + fileInfo.Name + ".pgp"))
             {                
                 ecnFile.EncryptAndSign(outStrm, fileInfo);                
             }
@@ -57,8 +57,8 @@ namespace PgpDE
                                                           @"C:\Users\Алмаз\Documents\Keys\bojok\secret.bpg", 
                                                           "ajar");
             PgpDecrypt decFile = new PgpDecrypt(kes);
-            
-            using (var encStream = File.OpenRead(@"C:\Users\Symfony\Шаляпин.doc.enc"))            
+
+            using (var encStream = File.OpenRead(@"C:\Users\Алмаз\Шаляпин.doc.pgp"))            
             {
                 decFile.VerifySignature(encStream, @"D:\Temp");
                 //MessageBox.Show(decFile.Decrypt(encStream, @"D:\Temp"));

@@ -11,7 +11,8 @@ using Org.BouncyCastle.Utilities.IO;
 
 namespace OpenPGPzzz
 {
-    
+
+    #region Encryption keys storage
     public class PgpEncryptionKeys
     {
 
@@ -197,7 +198,9 @@ namespace OpenPGPzzz
         #endregion
 
     }
+    #endregion
 
+    #region Decryption class
     public class PgpDecrypt
     {
         
@@ -319,7 +322,9 @@ namespace OpenPGPzzz
 
        
     }
+    #endregion
 
+    #region Encrypt class first try
     /// <summary>
 
     /// Wrapper around Bouncy Castle OpenPGP library.
@@ -327,7 +332,7 @@ namespace OpenPGPzzz
     /// Bouncy documentation can be found here: http://www.bouncycastle.org/docs/pgdocs1.6/index.html
 
     /// </summary>
-
+    
     public class PgpEncrypt
     {
 
@@ -382,8 +387,8 @@ namespace OpenPGPzzz
             if (!File.Exists(unencryptedFileInfo.FullName))
                 throw new ArgumentException("File to encrypt not found.");
 
-            Encoding enc = DetectEncoding(unencryptedFileInfo.FullName);
-            string name = enc.EncodingName;
+            /*string ext = unencryptedFileInfo.Extension;
+            File.Move(unencryptedFileInfo.FullName, unencryptedFileInfo.DirectoryName +"\\554"  + ext);*/
 
             using (Stream encryptedOut = ChainEncryptedOut(outputStream))
             using (Stream compressedOut = ChainCompressedOut(encryptedOut))
@@ -448,8 +453,9 @@ namespace OpenPGPzzz
 
         private static Stream ChainLiteralOut(Stream compressedOut, FileInfo file)
         {
+            string fileName = PgpLiteralData.Console;
             PgpLiteralDataGenerator pgpLiteralDataGenerator = new PgpLiteralDataGenerator();
-            return pgpLiteralDataGenerator.Open(compressedOut, PgpLiteralData.Binary, file);
+            return pgpLiteralDataGenerator.Open(compressedOut, PgpLiteralData.Binary,file);
         }
 
         private PgpSignatureGenerator InitSignatureGenerator(Stream compressedOut)
@@ -476,4 +482,142 @@ namespace OpenPGPzzz
 
         }
     }
+    #endregion
+
+    #region Second version of enc
+
+    public class PGPencryption
+    {
+        public string EncryptAndSign(string input, string recipientPublicKeyPath, string senderPrivateKeyPath, string passPhrase) 
+	        { 
+	 
+	            //get data to encrypt 
+	            byte[] clearData = Encoding.ASCII.GetBytes(input); 
+	 
+	            //create memory stream to hold output from encryption 
+	            MemoryStream finalOut = new MemoryStream(); 
+	 
+	            //enclide output in ascii armour (i.e. base 64 encode) so definietly can be sent over plain text email 
+	            ArmoredOutputStream armouredOut = new ArmoredOutputStream(finalOut); 
+	 
+	            //get public key to encrypt message 
+	            PgpPublicKey encryptionKey = this.ReadPublicKey(recipientPublicKeyPath); 
+	 
+	            //initialise encrypted data generator 
+	            PgpEncryptedDataGenerator encryptedDataGenerator = new PgpEncryptedDataGenerator(SymmetricKeyAlgorithmTag.Cast5, new SecureRandom()); 
+	            encryptedDataGenerator.AddMethod(encryptionKey); 
+	            Stream encOut = encryptedDataGenerator.Open(armouredOut, clearData.Length); 
+	 
+	 
+	            //initialise compression 
+	            PgpCompressedDataGenerator compressedDataGenerator = new PgpCompressedDataGenerator(CompressionAlgorithmTag.Zip); 
+	            Stream compressedOut = compressedDataGenerator.Open(encOut); 
+	 
+	 
+	 
+	            //get signing key (secret key = private key with pass-phrase protection 
+	            PgpSecretKey pgpSecKey = ReadSecretKey(senderPrivateKeyPath); 
+	            //get actual private key to use by unlocaking with pass-phrase 
+	            PgpPrivateKey signingPrivateKey = pgpSecKey.ExtractPrivateKey(passPhrase.ToCharArray()); 
+	 
+	            //initialise signature generator 
+	            PgpSignatureGenerator signatureGenerator = new PgpSignatureGenerator(pgpSecKey.PublicKey.Algorithm, HashAlgorithmTag.Sha1); 
+	             
+	            signatureGenerator.InitSign(PgpSignature.CanonicalTextDocument, signingPrivateKey); 
+	            PgpSignatureSubpacketGenerator subpacketGenerator = new PgpSignatureSubpacketGenerator(); 
+	            System.Collections.IEnumerator enumerator = pgpSecKey.PublicKey.GetUserIds().GetEnumerator(); 
+	            if (enumerator.MoveNext()) 
+	            { 
+	                subpacketGenerator.SetSignerUserId(false, (string)enumerator.Current); 
+	                signatureGenerator.SetHashedSubpackets(subpacketGenerator.Generate()); 
+	            } 
+	            PgpOnePassSignature onePassSignature = signatureGenerator.GenerateOnePassVersion(false); 
+	            onePassSignature.Encode(compressedOut); 
+	 
+	            // Create the Literal Data generator Output stream which writes to the compression stream 
+	            string fileName = PgpLiteralData.Console; 
+	 
+	            PgpLiteralDataGenerator literalDataGenerator = new PgpLiteralDataGenerator(); 
+	            Stream literalOut = literalDataGenerator.Open(compressedOut, // the compressed output stream 
+	                                                    PgpLiteralData.Binary, 
+	                                                    fileName,    // "filename" to store 
+	                                                    clearData.Length,  // length of clear data 
+	                                                    DateTime.UtcNow   // current time 
+	                                                    ); 
+	 
+	 
+	            //write data to output stream (eventually - goes through literal stream, compression stream, and encryption stream on the way!) 
+	            literalOut.Write(clearData, 0, clearData.Length); 
+	 
+	            //update signature generator with data 
+	            signatureGenerator.Update(clearData, 0, clearData.Length); 
+	 
+	            //close literal output 
+	            literalOut.Close(); 
+	            literalDataGenerator.Close(); 
+	 
+	 
+	            //generate signature and send to output stream 
+	            signatureGenerator.Generate().Encode(compressedOut); 
+	            //close other output streams 
+	            compressedOut.Close(); 
+	            compressedDataGenerator.Close(); 
+	            encOut.Close(); 
+	            encryptedDataGenerator.Close(); 
+	            armouredOut.Close(); 
+	            finalOut.Close(); 
+	            return Encoding.ASCII.GetString(finalOut.ToArray()); 
+	 
+	        } 
+	 
+	        private PgpSecretKey ReadSecretKey(string senderPrivateKeyPath) 
+	        { 
+	 
+	            Stream keyIn = File.OpenRead(senderPrivateKeyPath); 
+	            Stream inputStream = PgpUtilities.GetDecoderStream(keyIn); 
+	            PgpSecretKeyRingBundle pgpSec = new PgpSecretKeyRingBundle(inputStream); 
+	            inputStream.Close(); 
+	            keyIn.Close(); 
+	 
+	            // just loop through the collection till we find a key suitable for encryption 
+	            // assuming only one key in there 
+	 
+	            foreach (PgpSecretKeyRing kRing in pgpSec.GetKeyRings()) 
+	            { 
+	                foreach (PgpSecretKey k in kRing.GetSecretKeys()) 
+	                { 
+	                    if (k.IsSigningKey) 
+	                    { 
+	                        return k; 
+	                    } 
+	                } 
+	            } 
+	 
+	            throw new ArgumentException("Can't find signing key in key ring."); 
+	        } 
+	 
+	        private PgpPublicKey ReadPublicKey(string publicKeyPath) 
+	        { 
+	            Stream keyIn = File.OpenRead(publicKeyPath); 
+	            Stream inputStream = PgpUtilities.GetDecoderStream(keyIn); 
+	            PgpPublicKeyRingBundle pgpPub = new PgpPublicKeyRingBundle(inputStream); 
+	            inputStream.Close(); 
+	            keyIn.Close(); 
+	 
+	            foreach (PgpPublicKeyRing kRing in pgpPub.GetKeyRings()) 
+	            { 
+	                foreach (PgpPublicKey k in kRing.GetPublicKeys()) 
+	                { 
+	                    if (k.IsEncryptionKey) 
+	                    { 
+	                        return k; 
+	                    } 
+	                } 
+	            } 
+	            throw new ArgumentException("Can't find encryption key in key ring."); 
+	        } 
+    }
+
+    #endregion
+
 }

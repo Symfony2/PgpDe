@@ -32,3 +32,17 @@ C:\Users\Symfony\Desktop\Documents\Visual Studio 2010\Projects\exp\crypto\PgpDE\
 C:\Users\Symfony\Desktop\Documents\Visual Studio 2010\Projects\exp\crypto\PgpDE\PgpDE\obj\x86\Debug\GenerateResource.write.1.tlog
 D:\repo\PgpDe\PgpDE\obj\x86\Debug\PgpDE.exe
 D:\repo\PgpDe\PgpDE\obj\x86\Debug\PgpDE.pdb
+D:\repo\PgpDe\PgpDE\bin\Debug\PgpDE.exe
+D:\repo\PgpDe\PgpDE\bin\Debug\PgpDE.pdb
+D:\repo\PgpDe\PgpDE\bin\Debug\OpenPGPzzz.dll
+D:\repo\PgpDe\PgpDE\bin\Debug\BouncyCastle.Crypto.dll
+D:\repo\PgpDe\PgpDE\bin\Debug\OpenPGPzzz.pdb
+D:\repo\PgpDe\PgpDE\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\repo\PgpDe\PgpDE\obj\x86\Debug\MainWindow.baml
+D:\repo\PgpDe\PgpDE\obj\x86\Debug\MainWindow.g.cs
+D:\repo\PgpDe\PgpDE\obj\x86\Debug\App.g.cs
+D:\repo\PgpDe\PgpDE\obj\x86\Debug\PgpDE_MarkupCompile.cache
+D:\repo\PgpDe\PgpDE\obj\x86\Debug\PgpDE.g.resources
+D:\repo\PgpDe\PgpDE\obj\x86\Debug\PgpDE.Properties.Resources.resources
+D:\repo\PgpDe\PgpDE\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\repo\PgpDe\PgpDE\obj\x86\Debug\GenerateResource.write.1.tlog
