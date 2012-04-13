@@ -387,8 +387,7 @@ namespace OpenPGPzzz
             if (!File.Exists(unencryptedFileInfo.FullName))
                 throw new ArgumentException("File to encrypt not found.");
 
-            /*string ext = unencryptedFileInfo.Extension;
-            File.Move(unencryptedFileInfo.FullName, unencryptedFileInfo.DirectoryName +"\\554"  + ext);*/
+            
 
             using (Stream encryptedOut = ChainEncryptedOut(outputStream))
             using (Stream compressedOut = ChainCompressedOut(encryptedOut))
@@ -484,7 +483,7 @@ namespace OpenPGPzzz
     }
     #endregion
 
-    #region Second version of enc
+   /* #region Second version of enc
 
     public class PGPencryption
     {
@@ -618,6 +617,6 @@ namespace OpenPGPzzz
 	        } 
     }
 
-    #endregion
+    #endregion*/
 
 }

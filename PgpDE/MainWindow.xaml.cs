@@ -14,7 +14,10 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using OpenPGPzzz;
 
-namespace PgpDE
+namespace PgpDE 
+    
+    /*OPen debug\bin directory during the program run and u ll see that encryption/decryption works fine but verifing doesn't work
+     many thanks !!!*/
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -27,24 +30,32 @@ namespace PgpDE
         public MainWindow()
         {
             InitializeComponent();
-            /*publicKeyPath = @"C:\Users\Symfony\Documents\keys\Yan\pub.bpg";
-            privateKeyPath = @"C:\Users\Symfony\Documents\keys\Almaz\secret.bpg";
-            passPhrase = "root";*/
 
-            publicKeyPath = @"C:\Users\Алмаз\Documents\Keys\bojok\pub.bpg";
-            privateKeyPath = @"C:\Users\Алмаз\Documents\Keys\almaz\secret.bpg";
+            //recivers public key
+            publicKeyPath = Environment.CurrentDirectory + @"\keys\reciver\pub.bpg";
+            //senders private key
+            privateKeyPath = Environment.CurrentDirectory + @"\keys\sender\secret.bpg";
+            //pass phrase
             passPhrase = "galileo";
+            
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
+            //recivers public key
+            publicKeyPath = Environment.CurrentDirectory + @"\keys\reciver\pub.bpg";
+            //senders private key
+            privateKeyPath = Environment.CurrentDirectory + @"\keys\sender\secret.bpg";
+            //pass phrase
+            passPhrase = "galileo";
 
             PgpEncryptionKeys kes = new PgpEncryptionKeys(this.publicKeyPath, this.privateKeyPath, this.passPhrase);
             PgpEncrypt ecnFile = new PgpEncrypt(kes);
-            FileInfo fileInfo = new FileInfo(@"D:\Temp\Шаляпин.doc");
-             
-            //using (Stream outStrm = File.Create(@"C:\Users\Symfony\" + fileInfo.Name + ".enc"))
-            using (Stream outStrm = File.Create(@"C:\Users\Алмаз\" + fileInfo.Name + ".pgp"))
+            FileInfo fileInfo = new FileInfo(Environment.CurrentDirectory + @"\exp\Шаляпин.doc");
+
+            string path = Environment.CurrentDirectory + "\\" + fileInfo.Name + ".pgp";
+            
+            using (Stream outStrm = File.Create(path))
             {                
                 ecnFile.EncryptAndSign(outStrm, fileInfo);                
             }
@@ -53,17 +64,21 @@ namespace PgpDE
 
         private void button2_Click(object sender, RoutedEventArgs e)
         {
-            PgpEncryptionKeys kes = new PgpEncryptionKeys(@"C:\Users\Алмаз\Documents\Keys\almaz\pub.bpg",
-                                                          @"C:\Users\Алмаз\Documents\Keys\bojok\secret.bpg", 
-                                                          "ajar");
+            //sender's public key
+            publicKeyPath = Environment.CurrentDirectory + @"\keys\sender\pub.bpg";
+            //resiver's private key
+            privateKeyPath = Environment.CurrentDirectory + @"\keys\reciver\secret.bpg";
+            //pass phrase
+            passPhrase = "ajar";
+
+            PgpEncryptionKeys kes = new PgpEncryptionKeys(this.publicKeyPath, this.privateKeyPath, this.passPhrase);
+
             PgpDecrypt decFile = new PgpDecrypt(kes);
 
-            using (var encStream = File.OpenRead(@"C:\Users\Алмаз\Шаляпин.doc.pgp"))            
+            using (var encStream = File.OpenRead(Environment.CurrentDirectory +  "\\Шаляпин.doc.pgp"))
             {
                 decFile.VerifySignature(encStream, @"D:\Temp");
-                //MessageBox.Show(decFile.Decrypt(encStream, @"D:\Temp"));
             }
-            
 
         }
     }
