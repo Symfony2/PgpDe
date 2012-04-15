@@ -1,4 +1,7 @@
 <Modules>
   <Module PersistentId="0C16F649-BD05-4E16-90FB-E0B3C2226938" ModuleId="PgpDE" />
   <Module PersistentId="3569BA00-EEFF-4E67-8EB5-E70CB5564F96" ModuleId="OpenPGPzzz" />
+  <Module PersistentId="crypto, Version=1.7.4488.39339, Culture=neutral, PublicKeyToken=null" ModuleId="crypto" />
+  <Module PersistentId="crypto, Version=1.7.4488.40005, Culture=neutral, PublicKeyToken=null" ModuleId="crypto_1" />
+  <Module PersistentId="38872A5F-E87E-4FAD-B109-8EB7B2E6A4A0" ModuleId="crypto_2" />
 </Modules>

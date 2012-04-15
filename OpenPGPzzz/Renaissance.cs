@@ -245,7 +245,7 @@ namespace OpenPGPzzz
             
             PgpEncryptedDataList enc = (PgpEncryptedDataList) pgpObjF.NextPgpObject();
             
-            PgpPrivateKey sKey = null;
+            PgpPrivateKey sKey =null;
             PgpPublicKeyEncryptedData pbe = null;
             PgpSecretKeyRingBundle pgpSec = new PgpSecretKeyRingBundle(PgpUtilities.
                 GetDecoderStream(File.OpenRead(m_encryptionKeys.PrivateKeyPathd)));
@@ -268,6 +268,7 @@ namespace OpenPGPzzz
             
             Stream clear = pbe.GetDataStream(sKey);
             PgpObjectFactory plainFact = new PgpObjectFactory(clear);
+            clear.Close();
             PgpCompressedData cData = (PgpCompressedData)plainFact.NextPgpObject();
             PgpObjectFactory pgpFact = new PgpObjectFactory(cData.GetDataStream());
             PgpObject message = pgpFact.NextPgpObject();
@@ -278,7 +279,7 @@ namespace OpenPGPzzz
                 PgpOnePassSignature ops = p1[0];
 
                 PgpLiteralData p2 = (PgpLiteralData)pgpFact.NextPgpObject();
-                Stream dIn = p2.GetInputStream();
+                Stream dIn = p2.GetDataStream();
 
                 PgpPublicKeyRingBundle pgpRing = new PgpPublicKeyRingBundle(PgpUtilities.
                             GetDecoderStream(File.OpenRead(m_encryptionKeys.PublicKeyPathd)));
@@ -288,6 +289,7 @@ namespace OpenPGPzzz
                 Stream fos = File.Create(p2.FileName);
                 ops.InitVerify(key);
 
+ 
                 int ch;
                 while ((ch = dIn.ReadByte()) >= 0)
                 {
@@ -295,11 +297,12 @@ namespace OpenPGPzzz
                     fos.WriteByte((byte)ch);
                 }
                 fos.Close();
-                
+
+                PgpSignatureList p3 = (PgpSignatureList)pgpFact.NextPgpObject();
                 //PgpObject p3 = pgpFact.NextPgpObject();
                 //if(p3 is PgpSignature)
                 //    throw new PgpException("signature verified.");
-                PgpSignatureList p3 = (PgpSignatureList)pgpFact.NextPgpObject();
+               
                 PgpSignature firstSig = p3[0];
                 if (ops.Verify(firstSig))
                 {
@@ -407,16 +410,7 @@ namespace OpenPGPzzz
 
         }
 
-        public Encoding DetectEncoding(String fileName)
-        {
-            // open the file with the stream-reader:
-            using (StreamReader reader = new StreamReader(fileName, true))
-            {
-                
-                // return the encoding.
-                return reader.CurrentEncoding;
-            }
-        }
+        
 
 
         private static void WriteOutputAndSign( Stream compressedOut,
@@ -432,7 +426,7 @@ namespace OpenPGPzzz
                 literalOut.Write(buf, 0, length);
                 signatureGenerator.Update(buf, 0, length);
             }
-            
+
             signatureGenerator.Generate().Encode(compressedOut);
         }
 

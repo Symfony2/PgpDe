@@ -27,6 +27,9 @@ namespace PgpDE
         private string publicKeyPath;
         private string privateKeyPath;
         private string passPhrase;
+        private string filePath;
+        private string hashTypeName;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -51,7 +54,7 @@ namespace PgpDE
 
             PgpEncryptionKeys kes = new PgpEncryptionKeys(this.publicKeyPath, this.privateKeyPath, this.passPhrase);
             PgpEncrypt ecnFile = new PgpEncrypt(kes);
-            FileInfo fileInfo = new FileInfo(Environment.CurrentDirectory + @"\exp\Шаляпин.doc");
+            FileInfo fileInfo = new FileInfo(Environment.CurrentDirectory + @"\exp\tty.doc");
 
             string path = Environment.CurrentDirectory + "\\" + fileInfo.Name + ".pgp";
             
@@ -75,10 +78,51 @@ namespace PgpDE
 
             PgpDecrypt decFile = new PgpDecrypt(kes);
 
-            using (var encStream = File.OpenRead(Environment.CurrentDirectory +  "\\Шаляпин.doc.pgp"))
+            using (var encStream = File.OpenRead(Environment.CurrentDirectory +  "\\tty.doc.pgp"))
             {
                 decFile.VerifySignature(encStream, @"D:\Temp");
             }
+
+        }
+
+        private void button3_Click(object sender, RoutedEventArgs e)
+        {
+            filePath = Environment.CurrentDirectory + @"\exp\tty.doc";
+            hashTypeName = "SHA1";
+            
+            //senders private key
+            privateKeyPath = Environment.CurrentDirectory + @"\keys\sender\secret.bpg";
+            //pass phrase
+            passPhrase = "galileo";
+            HybrydESD signatureOfFile = new HybrydESD();
+
+            using (Stream   keyIn = File.OpenRead(privateKeyPath),
+                            outPutStrm = File.Create(filePath + ".asc"))
+            {
+                
+                signatureOfFile.SignFile(filePath,keyIn,outPutStrm,passPhrase.ToArray(),hashTypeName);
+            }
+
+        }
+
+        private void button4_Click(object sender, RoutedEventArgs e)
+        {
+            
+            filePath = Environment.CurrentDirectory + @"\exp\tty.doc.asc";
+            FileInfo fInfo = new FileInfo(filePath);
+            hashTypeName = "SHA1";
+            //sender public key
+            publicKeyPath = Environment.CurrentDirectory + @"\keys\sender\pub.bpg";
+            //pass phrase
+            passPhrase = "galileo";
+
+            string str = fInfo.Name.Substring(0, fInfo.Name.Length-4);
+            HybrydESD signatureOfFile = new HybrydESD();
+            using(Stream signedFile = File.OpenRead(filePath),pubKeyIn = File.OpenRead(publicKeyPath))
+            {
+                signatureOfFile.VerifyFile(signedFile, pubKeyIn, str);
+            }
+            
 
         }
     }

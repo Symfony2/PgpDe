@@ -11,7 +11,12 @@ C:\Users\Symfony\Desktop\Documents\Visual Studio 2010\Projects\exp\crypto\PgpDE\
 C:\Users\Symfony\Desktop\Documents\Visual Studio 2010\Projects\exp\crypto\PgpDE\OpenPGPzzz\obj\Debug\OpenPGPzzz.pdb
 D:\repo\PgpDe\OpenPGPzzz\bin\Debug\OpenPGPzzz.dll
 D:\repo\PgpDe\OpenPGPzzz\bin\Debug\OpenPGPzzz.pdb
-D:\repo\PgpDe\OpenPGPzzz\bin\Debug\BouncyCastle.Crypto.dll
+D:\repo\PgpDe\OpenPGPzzz\bin\Debug\crypto.dll
+D:\repo\PgpDe\OpenPGPzzz\bin\Debug\nunit.core.dll
+D:\repo\PgpDe\OpenPGPzzz\bin\Debug\nunit.framework.dll
+D:\repo\PgpDe\OpenPGPzzz\bin\Debug\nunit.core.interfaces.dll
+D:\repo\PgpDe\OpenPGPzzz\bin\Debug\crypto.pdb
+D:\repo\PgpDe\OpenPGPzzz\bin\Debug\crypto.xml
 D:\repo\PgpDe\OpenPGPzzz\obj\Debug\ResolveAssemblyReference.cache
 D:\repo\PgpDe\OpenPGPzzz\obj\Debug\OpenPGPzzz.dll
 D:\repo\PgpDe\OpenPGPzzz\obj\Debug\OpenPGPzzz.pdb

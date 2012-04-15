@@ -3,7 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <Button Content="Enc" Height="38" HorizontalAlignment="Left" Margin="391,69,0,0" Name="button1" VerticalAlignment="Top" Width="75" Click="button1_Click" />
-        <Button Content="Dec" Height="38" HorizontalAlignment="Left" Margin="391,126,0,0" Name="button2" VerticalAlignment="Top" Width="75" Click="button2_Click" />
+        <Button Content="Enc" Height="38" HorizontalAlignment="Left" Margin="401,174,0,0" Name="button1" VerticalAlignment="Top" Width="75" Click="button1_Click" />
+        <Button Content="Dec" Height="38" HorizontalAlignment="Left" Margin="401,218,0,0" Name="button2" VerticalAlignment="Top" Width="75" Click="button2_Click" />
+        <Button Content="EncFile" Height="28" HorizontalAlignment="Left" Margin="350,25,0,0" Name="button3" VerticalAlignment="Top" Width="126" Click="button3_Click" />
+        <Button Content="Verify " Height="28" HorizontalAlignment="Left" Margin="350,59,0,0" Name="button4" VerticalAlignment="Top" Width="126" Click="button4_Click" />
     </Grid>
 </Window>
