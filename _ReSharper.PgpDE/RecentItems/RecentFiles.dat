@@ -1,39 +1,56 @@
 ﻿<RecentFiles>
   <RecentFiles>
     <File id="0C16F649-BD05-4E16-90FB-E0B3C2226938/f:MainWindow.xaml" caret="0" fromTop="0" />
-    <File id="3569BA00-EEFF-4E67-8EB5-E70CB5564F96/f:Renaissance.cs" caret="9565" fromTop="118" />
-    <File id="0C16F649-BD05-4E16-90FB-E0B3C2226938/f:MainWindow.xaml.cs" caret="448" fromTop="0" />
+    <File id="0C16F649-BD05-4E16-90FB-E0B3C2226938/f:MainWindow.xaml.cs" caret="3076" fromTop="23" />
+    <File id="38872A5F-E87E-4FAD-B109-8EB7B2E6A4A0/d:src/d:bcpg/f:BCPGInputStream.cs" caret="8388" fromTop="18" />
+    <File id="38872A5F-E87E-4FAD-B109-8EB7B2E6A4A0/d:src/d:util/f:Platform.cs" caret="3789" fromTop="16" />
+    <File id="38872A5F-E87E-4FAD-B109-8EB7B2E6A4A0/d:src/d:openpgp/f:PGPObject.cs" caret="113" fromTop="6" />
+    <File id="38872A5F-E87E-4FAD-B109-8EB7B2E6A4A0/d:src/d:openpgp/f:PGPKeyRing.cs" caret="214" fromTop="12" />
+    <File id="38872A5F-E87E-4FAD-B109-8EB7B2E6A4A0/d:src/d:openpgp/f:PGPPublicKeyRing.cs" caret="1359" fromTop="28" />
+    <File id="38872A5F-E87E-4FAD-B109-8EB7B2E6A4A0/d:src/d:openpgp/f:PGPObjectFactory.cs" caret="4386" fromTop="14" />
+    <File id="38872A5F-E87E-4FAD-B109-8EB7B2E6A4A0/d:src/d:util/d:zlib/f:InfCodes.cs" caret="16943" fromTop="14" />
+    <File id="38872A5F-E87E-4FAD-B109-8EB7B2E6A4A0/d:src/d:util/d:zlib/f:InfBlocks.cs" caret="24574" fromTop="27" />
+    <File id="38872A5F-E87E-4FAD-B109-8EB7B2E6A4A0/d:src/d:util/d:zlib/f:Inflate.cs" caret="9366" fromTop="14" />
+    <File id="38872A5F-E87E-4FAD-B109-8EB7B2E6A4A0/d:src/d:util/d:zlib/f:ZStream.cs" caret="3930" fromTop="16" />
+    <File id="38872A5F-E87E-4FAD-B109-8EB7B2E6A4A0/d:src/d:util/d:zlib/f:ZInputStream.cs" caret="4179" fromTop="13" />
+    <File id="38872A5F-E87E-4FAD-B109-8EB7B2E6A4A0/d:src/d:openpgp/f:PGPSignatureGenerator.cs" caret="6293" fromTop="9" />
+    <File id="38872A5F-E87E-4FAD-B109-8EB7B2E6A4A0/d:src/d:openpgp/f:PGPEncryptedDataGenerator.cs" caret="1177" fromTop="30" />
+    <File id="38872A5F-E87E-4FAD-B109-8EB7B2E6A4A0/d:src/d:bcpg/f:ContainedPacket.cs" caret="453" fromTop="19" />
+    <File id="38872A5F-E87E-4FAD-B109-8EB7B2E6A4A0/d:src/d:bcpg/f:BCPGOutputStream.cs" caret="984" fromTop="0" />
+    <File id="38872A5F-E87E-4FAD-B109-8EB7B2E6A4A0/d:src/d:openpgp/f:PGPOnePassSignature.cs" caret="3923" fromTop="23" />
+    <File id="38872A5F-E87E-4FAD-B109-8EB7B2E6A4A0/d:src/d:openpgp/f:PgpUtilities.cs" caret="2247" fromTop="29" />
+    <File id="3569BA00-EEFF-4E67-8EB5-E70CB5564F96/f:Renaissance.cs" caret="9175" fromTop="22" />
   </RecentFiles>
   <RecentEdits>
-    <File id="3569BA00-EEFF-4E67-8EB5-E70CB5564F96/f:Renaissance.cs" caret="21830" fromTop="34" />
-    <File id="3569BA00-EEFF-4E67-8EB5-E70CB5564F96/f:Renaissance.cs" caret="20854" fromTop="8" />
-    <File id="3569BA00-EEFF-4E67-8EB5-E70CB5564F96/f:Renaissance.cs" caret="21017" fromTop="14" />
-    <File id="3569BA00-EEFF-4E67-8EB5-E70CB5564F96/f:Renaissance.cs" caret="21324" fromTop="20" />
-    <File id="3569BA00-EEFF-4E67-8EB5-E70CB5564F96/f:Renaissance.cs" caret="314" fromTop="5" />
-    <File id="3569BA00-EEFF-4E67-8EB5-E70CB5564F96/f:Renaissance.cs" caret="9885" fromTop="17" />
-    <File id="3569BA00-EEFF-4E67-8EB5-E70CB5564F96/f:Renaissance.cs" caret="5408" fromTop="7" />
-    <File id="3569BA00-EEFF-4E67-8EB5-E70CB5564F96/f:Renaissance.cs" caret="9637" fromTop="9" />
-    <File id="3569BA00-EEFF-4E67-8EB5-E70CB5564F96/f:Renaissance.cs" caret="15590" fromTop="18" />
-    <File id="3569BA00-EEFF-4E67-8EB5-E70CB5564F96/f:Renaissance.cs" caret="15647" fromTop="15" />
-    <File id="3569BA00-EEFF-4E67-8EB5-E70CB5564F96/f:Renaissance.cs" caret="17598" fromTop="12" />
-    <File id="3569BA00-EEFF-4E67-8EB5-E70CB5564F96/f:Renaissance.cs" caret="15865" fromTop="20" />
-    <File id="3569BA00-EEFF-4E67-8EB5-E70CB5564F96/f:Renaissance.cs" caret="18595" fromTop="24" />
-    <File id="3569BA00-EEFF-4E67-8EB5-E70CB5564F96/f:Renaissance.cs" caret="9130" fromTop="0" />
-    <File id="3569BA00-EEFF-4E67-8EB5-E70CB5564F96/f:Renaissance.cs" caret="14887" fromTop="18" />
-    <File id="3569BA00-EEFF-4E67-8EB5-E70CB5564F96/f:Renaissance.cs" caret="14054" fromTop="17" />
-    <File id="3569BA00-EEFF-4E67-8EB5-E70CB5564F96/f:Renaissance.cs" caret="14416" fromTop="23" />
-    <File id="3569BA00-EEFF-4E67-8EB5-E70CB5564F96/f:Renaissance.cs" caret="13746" fromTop="7" />
+    <File id="3569BA00-EEFF-4E67-8EB5-E70CB5564F96/f:Renaissance.cs" caret="14933" fromTop="12" />
+    <File id="3569BA00-EEFF-4E67-8EB5-E70CB5564F96/f:Renaissance.cs" caret="14933" fromTop="20" />
+    <File id="3569BA00-EEFF-4E67-8EB5-E70CB5564F96/f:Renaissance.cs" caret="14933" fromTop="24" />
+    <File id="3569BA00-EEFF-4E67-8EB5-E70CB5564F96/f:Renaissance.cs" caret="13430" fromTop="17" />
+    <File id="3569BA00-EEFF-4E67-8EB5-E70CB5564F96/f:Renaissance.cs" caret="13792" fromTop="23" />
+    <File id="3569BA00-EEFF-4E67-8EB5-E70CB5564F96/f:Renaissance.cs" caret="13122" fromTop="7" />
     <File id="3569BA00-EEFF-4E67-8EB5-E70CB5564F96/f:Renaissance.cs" caret="6514" fromTop="19" />
-    <File id="0C16F649-BD05-4E16-90FB-E0B3C2226938/f:MainWindow.xaml.cs" caret="2816" fromTop="26" />
-    <File id="0C16F649-BD05-4E16-90FB-E0B3C2226938/f:MainWindow.xaml.cs" caret="2200" fromTop="15" />
-    <File id="3569BA00-EEFF-4E67-8EB5-E70CB5564F96/f:Renaissance.cs" caret="11563" fromTop="18" />
-    <File id="3569BA00-EEFF-4E67-8EB5-E70CB5564F96/f:Renaissance.cs" caret="21866" fromTop="18" />
+    <File id="0C16F649-BD05-4E16-90FB-E0B3C2226938/f:MainWindow.xaml.cs" caret="3007" fromTop="26" />
+    <File id="0C16F649-BD05-4E16-90FB-E0B3C2226938/f:MainWindow.xaml.cs" caret="2391" fromTop="15" />
+    <File id="3569BA00-EEFF-4E67-8EB5-E70CB5564F96/f:Renaissance.cs" caret="11410" fromTop="18" />
     <File id="0C16F649-BD05-4E16-90FB-E0B3C2226938/f:MainWindow.xaml.cs" caret="1226" fromTop="14" />
     <File id="0C16F649-BD05-4E16-90FB-E0B3C2226938/f:MainWindow.xaml.cs" caret="1336" fromTop="20" />
     <File id="0C16F649-BD05-4E16-90FB-E0B3C2226938/f:MainWindow.xaml.cs" caret="1643" fromTop="25" />
-    <File id="0C16F649-BD05-4E16-90FB-E0B3C2226938/f:MainWindow.xaml.cs" caret="2036" fromTop="21" />
-    <File id="0C16F649-BD05-4E16-90FB-E0B3C2226938/f:MainWindow.xaml.cs" caret="2542" fromTop="24" />
-    <File id="0C16F649-BD05-4E16-90FB-E0B3C2226938/f:MainWindow.xaml.cs" caret="2994" fromTop="29" />
+    <File id="0C16F649-BD05-4E16-90FB-E0B3C2226938/f:MainWindow.xaml.cs" caret="2240" fromTop="21" />
+    <File id="0C16F649-BD05-4E16-90FB-E0B3C2226938/f:MainWindow.xaml.cs" caret="2733" fromTop="24" />
     <File id="0C16F649-BD05-4E16-90FB-E0B3C2226938/f:MainWindow.xaml.cs" caret="580" fromTop="7" />
+    <File id="3569BA00-EEFF-4E67-8EB5-E70CB5564F96/f:Renaissance.cs" caret="14933" fromTop="18" />
+    <File id="38872A5F-E87E-4FAD-B109-8EB7B2E6A4A0/d:src/d:openpgp/f:PGPObjectFactory.cs" caret="2751" fromTop="24" />
+    <File id="38872A5F-E87E-4FAD-B109-8EB7B2E6A4A0/d:src/d:bcpg/f:BCPGInputStream.cs" caret="467" fromTop="12" />
+    <File id="3569BA00-EEFF-4E67-8EB5-E70CB5564F96/f:Renaissance.cs" caret="11680" fromTop="21" />
+    <File id="3569BA00-EEFF-4E67-8EB5-E70CB5564F96/f:Renaissance.cs" caret="12037" fromTop="20" />
+    <File id="0C16F649-BD05-4E16-90FB-E0B3C2226938/f:MainWindow.xaml.cs" caret="2280" fromTop="30" />
+    <File id="3569BA00-EEFF-4E67-8EB5-E70CB5564F96/f:Renaissance.cs" caret="12700" fromTop="26" />
+    <File id="3569BA00-EEFF-4E67-8EB5-E70CB5564F96/f:Renaissance.cs" caret="14191" fromTop="10" />
+    <File id="38872A5F-E87E-4FAD-B109-8EB7B2E6A4A0/d:src/d:openpgp/f:PGPObjectFactory.cs" caret="4172" fromTop="22" />
+    <File id="38872A5F-E87E-4FAD-B109-8EB7B2E6A4A0/d:src/d:bcpg/f:BCPGOutputStream.cs" caret="10048" fromTop="23" />
+    <File id="38872A5F-E87E-4FAD-B109-8EB7B2E6A4A0/d:src/d:openpgp/f:PGPEncryptedDataGenerator.cs" caret="1157" fromTop="19" />
+    <File id="3569BA00-EEFF-4E67-8EB5-E70CB5564F96/f:Renaissance.cs" caret="8959" fromTop="16" />
+    <File id="0C16F649-BD05-4E16-90FB-E0B3C2226938/f:MainWindow.xaml.cs" caret="2027" fromTop="15" />
+    <File id="0C16F649-BD05-4E16-90FB-E0B3C2226938/f:MainWindow.xaml.cs" caret="3076" fromTop="23" />
   </RecentEdits>
 </RecentFiles>

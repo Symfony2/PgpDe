@@ -52,11 +52,14 @@ namespace PgpDE
             PgpEncryptionKeys kes = new PgpEncryptionKeys(this.publicKeyPath, this.privateKeyPath, this.passPhrase);
             PgpEncrypt ecnFile = new PgpEncrypt(kes);
             FileInfo fileInfo = new FileInfo(Environment.CurrentDirectory + @"\exp\Шаляпин.doc");
+            string newFileName = Environment.CurrentDirectory + "\\exp\\" + string.Format("{0: dd_MM_yyyy HH_mm}",
+            DateTime.Now) + fileInfo.Extension;
+            fileInfo.MoveTo(newFileName);
 
-            string path = Environment.CurrentDirectory + "\\" + fileInfo.Name + ".pgp";
+            string path = Environment.CurrentDirectory + "\\" + fileInfo.Name + ".bpg";
             
             using (Stream outStrm = File.Create(path))
-            {                
+            {   
                 ecnFile.EncryptAndSign(outStrm, fileInfo);                
             }
             
@@ -75,7 +78,7 @@ namespace PgpDE
 
             PgpDecrypt decFile = new PgpDecrypt(kes);
 
-            using (var encStream = File.OpenRead(Environment.CurrentDirectory +  "\\Шаляпин.doc.pgp"))
+            using (var encStream = File.OpenRead(Environment.CurrentDirectory + "\\ 18_04_2012 23_04.doc.bpg"))
             {
                 decFile.VerifySignature(encStream, @"D:\Temp");
             }

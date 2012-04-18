@@ -296,9 +296,7 @@ namespace OpenPGPzzz
                 }
                 fos.Close();
                 
-                //PgpObject p3 = pgpFact.NextPgpObject();
-                //if(p3 is PgpSignature)
-                //    throw new PgpException("signature verified.");
+                
                 PgpSignatureList p3 = (PgpSignatureList)pgpFact.NextPgpObject();
                 PgpSignature firstSig = p3[0];
                 if (ops.Verify(firstSig))
@@ -394,29 +392,14 @@ namespace OpenPGPzzz
             {
 
                 PgpSignatureGenerator signatureGenerator = InitSignatureGenerator(compressedOut);
-
                 using (Stream literalOut = ChainLiteralOut(compressedOut, unencryptedFileInfo))
                 using (FileStream inputFile = unencryptedFileInfo.OpenRead())                
                 {
-                    StreamReader strRdr = new StreamReader(inputFile);
-                    Encoding code = strRdr.CurrentEncoding;
                     WriteOutputAndSign(compressedOut, literalOut, inputFile, signatureGenerator);
                 }
-
-            }
-
-        }
-
-        public Encoding DetectEncoding(String fileName)
-        {
-            // open the file with the stream-reader:
-            using (StreamReader reader = new StreamReader(fileName, true))
-            {
-                
-                // return the encoding.
-                return reader.CurrentEncoding;
             }
         }
+
 
 
         private static void WriteOutputAndSign( Stream compressedOut,
@@ -432,6 +415,7 @@ namespace OpenPGPzzz
                 literalOut.Write(buf, 0, length);
                 signatureGenerator.Update(buf, 0, length);
             }
+            
             
             signatureGenerator.Generate().Encode(compressedOut);
         }
@@ -462,7 +446,7 @@ namespace OpenPGPzzz
             const bool IsCritical = false;
             const bool IsNested = false;
             PublicKeyAlgorithmTag tag = m_encryptionKeys.SecretKey.PublicKey.Algorithm;
-            PgpSignatureGenerator pgpSignatureGenerator = new PgpSignatureGenerator(tag, HashAlgorithmTag.Sha1);
+            PgpSignatureGenerator pgpSignatureGenerator = new PgpSignatureGenerator(tag, HashAlgorithmTag.Sha384);
             pgpSignatureGenerator.InitSign(PgpSignature.BinaryDocument, m_encryptionKeys.PrivateKey);
 
             foreach (string userId in m_encryptionKeys.SecretKey.PublicKey.GetUserIds())
