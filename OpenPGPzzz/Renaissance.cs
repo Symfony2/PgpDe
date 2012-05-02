@@ -7,7 +7,9 @@ using System.Text;
 using Org.BouncyCastle.Bcpg;
 using Org.BouncyCastle.Bcpg.OpenPgp;
 using Org.BouncyCastle.Security;
+using Org.BouncyCastle.Utilities;
 using Org.BouncyCastle.Utilities.IO;
+using System.Collections;
 
 namespace OpenPGPzzz
 {
@@ -207,7 +209,7 @@ namespace OpenPGPzzz
         private PgpEncryptionKeys m_encryptionKeys;
         
 
-        private const int BufferSize = 0x10000; // should always be power of 2 
+        private const int BufferSize = 0x11000; // should always be power of 2 
 
         /// <summary>
 
@@ -241,7 +243,9 @@ namespace OpenPGPzzz
         public void VerifySignature(Stream input, string outputpath)
         {
             input = PgpUtilities.GetDecoderStream(input);
-            PgpObjectFactory pgpObjF = new PgpObjectFactory(input);            
+            PgpObjectFactory pgpObjF = new PgpObjectFactory(input);
+
+            //IList collection = pgpObjF.AllPgpObjects();
             
             PgpEncryptedDataList enc = (PgpEncryptedDataList) pgpObjF.NextPgpObject();
             
@@ -284,8 +288,9 @@ namespace OpenPGPzzz
                             GetDecoderStream(File.OpenRead(m_encryptionKeys.PublicKeyPathd)));
                 PgpPublicKey key = pgpRing.GetPublicKey(ops.KeyId);
 
-                
+
                 Stream fos = File.Create(p2.FileName);
+                
                 ops.InitVerify(key);
 
                 int ch;

@@ -2,4 +2,5 @@
   <Module PersistentId="0C16F649-BD05-4E16-90FB-E0B3C2226938" ModuleId="PgpDE" />
   <Module PersistentId="3569BA00-EEFF-4E67-8EB5-E70CB5564F96" ModuleId="OpenPGPzzz" />
   <Module PersistentId="38872A5F-E87E-4FAD-B109-8EB7B2E6A4A0" ModuleId="crypto" />
+  <Module PersistentId="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" ModuleId="System" />
 </Modules>
